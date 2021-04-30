@@ -17,8 +17,8 @@ const todoData = [
 ];
 
 const render = function(){
-    todoList.textContent = '';
-    todoCompleted.textContent = '';
+    todoList.textContent = ''; //обнуляем старые записи
+    todoCompleted.textContent = ''; //обнуляем значения чек-боксов
     
     todoData.forEach(function(item){
         const li = document.createElement('li'); //создаем элемент ли
@@ -30,14 +30,14 @@ const render = function(){
                 '<button class="todo-complete"></button>' + 
             '</div>';
         
-        if (item.completed){
-            todoCompleted.append(li);
-        } else {todoList.append(li);
+        if (item.completed){    //если дело выполнено, то
+            todoCompleted.append(li); //добавляем в выполненные
+        } else {todoList.append(li); //иначе - в список ел
         }
 
         const btnTodoComplete = li.querySelector('.todo-complete');
 
-        btnTodoComplete.addEventListener('click', function(){
+        btnTodoComplete.addEventListener('click', function(){ //меняем значение чек-бокса при нажатии на противоположное значение
             item.completed = !item.completed;
             render();
         })
@@ -46,14 +46,14 @@ const render = function(){
 };
 
 todoControl.addEventListener('submit', function(event){
-    event.preventDefault();
+    event.preventDefault(); //сбрасываем настройки браузера
 
-    const newTodo = {
+    const newTodo = {   //новое дело в список дел
         value: headerInput.value,
         completed: false
     };
 
-    todoData.push(newTodo);
+    todoData.push(newTodo); //заливаем новое дело в список дел
 
     render();
 });
