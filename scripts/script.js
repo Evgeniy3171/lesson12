@@ -5,16 +5,7 @@ const todoControl = document.querySelector('.todo-control'),
       todoList = document.querySelector('.todo-list'),
       todoCompleted = document.querySelector('.todo-completed');
 
-const todoData = [
-    {
-        value: 'Сварить кофе',
-        completed: false
-    },
-    {
-        value: 'Помыть посуду',
-        completed: true
-    }
-];
+const todoData = [];
 
 const render = function(){
     todoList.textContent = ''; //обнуляем старые записи
@@ -41,6 +32,19 @@ const render = function(){
             item.completed = !item.completed;
             render();
         })
+
+        const todoRemove = li.querySelector('.todo-remove');
+
+        todoRemove.addEventListener('click', function(){ //удаляем задачу
+            //li = document.
+            //li.parentNode.removeChild(li);
+            //todoList.remove(target.li);
+            todoList.remove(li);
+            //this.parentNode.removeChild(this);
+            //li.innerHTML = null;
+            //item.completed = !item.completed;
+            render();
+        });
 
     });
 };
